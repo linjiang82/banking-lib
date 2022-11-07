@@ -7,16 +7,16 @@ type AppError struct {
 	Msg  string `json:"message,omitempty"`
 }
 
-func NewRowNotFoundError(msg string) AppError {
-	return AppError{Code: 404, Msg: msg}
+func NewRowNotFoundError(msg string) *AppError {
+	return &AppError{Code: 404, Msg: msg}
 }
 
-func NewDataBaseError(msg string) AppError {
-	return AppError{Code: 500, Msg: msg}
+func NewDataBaseError(msg string) *AppError {
+	return &AppError{Code: 500, Msg: msg}
 }
 
-func NewValidationError(msg string) AppError {
-	return AppError{Code: http.StatusUnprocessableEntity, Msg: msg}
+func NewValidationError(msg string) *AppError {
+	return &AppError{Code: http.StatusUnprocessableEntity, Msg: msg}
 }
 
 func (e AppError) AsMessage() *AppError {
